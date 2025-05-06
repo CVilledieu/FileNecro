@@ -8,13 +8,6 @@ output: directory with the name of the file path and the skeleton of the project
 #include <sys/types.h>
 
 
-
-
-int main(void){
-    printf("Hello");
-}
-
-/*
 char* getInput(char *out);
 typedef struct project;
 
@@ -49,6 +42,4 @@ char* getInput(char *out){
         return &buff;
     }
     return NULL;
-
-    
-    */
+}
