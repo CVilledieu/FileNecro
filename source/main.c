@@ -4,42 +4,45 @@ input: file path to the where the directory should be created
 output: directory with the name of the file path and the skeleton of the project inside it.
 */
 #include <stdio.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
-
-char* getInput(char *out);
-typedef struct project;
-
-struct project{
+typedef struct Project {
     char *name;
     char *path;
+    enum Lang lang;
+}Project;   
 
+enum Lang{
+    JS,
+    GO,
+    C
 };
 
-int main(void) {
-    char *res = NULL;
-    
-    do{
-        res = getInput("Please provide the file path\n");
-        if (res == NULL){
-
-            printf("Invalid path\n");
+int main(int argc, char *argv[]) {
+    char **options;
+    char **non_options;
+    FILE *fptr;
+    Project *pPtr;
+    //Index starts at 1, because first argument returned should be app name
+    for (int i = 1; i < argc; i++){
+        if (i+1 >= argc){
+            break;
         }
-    }while(res == NULL);    
+        switch (*argv[i])
+        {
+        case '-n':
+            pPtr->name = argv[i+1];
+            break;
+        case '-p':
+            pPtr->path = argv[i+1];
+        }
+    }
+    
+    fptr = fopen(*pPtr->path + *pPtr->name,"w");
+
+
 
     return 0;
 }
 
-char* getInput(char *out){
-    printf("%s\n", out);
-    char buff[17], inp[17];
-    int res = scanf("%16s", &inp);
-    strncpy(buff, inp, sizeof(buff)-1);
-    buff[sizeof(buff)-1] = '\0';
-    const char *whiteList = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
-    if (strspn(buff, whiteList) == strlen(buff)){
-        return &buff;
-    }
-    return NULL;
-}
+
+

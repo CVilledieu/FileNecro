@@ -1,15 +1,41 @@
 [
     {
         "name":"universal",
-        "set":[
-
-        ]
+        "files":"",
+        "dir":[{
+            "name":"",
+            "files":[".gitignore","README.md"],
+            "dir":{}          
+        }]
     },
 
     {
-        "name":"",
-        "set":[
-            
+        "name":"GO",
+        "files":"",
+        "dir":[{
+            "name": "SRC",
+            "files":["main.go"],
+            "dir":{}
+        }]
+    },
+    {
+        "name":"C",
+        "files":"",
+        "dir":[{
+            "name": "SRC",
+            "files":["main.c"],
+            "dir":{}
+        },{
+            "name":"bin",
+            "files":[],
+            "dir":[]
+        }]
+    },
+    {
+        "name":"JS",
+        "files":"",
+        "dir":[
+
         ]
     }
 ]

@@ -1,8 +1,13 @@
 # A simple project start
 
-## What
+## Usage:
 
-Creates the skeleton of a project based on the language selected. 
+run: pCreate [flags]
+run: pCreate [command]
+
+flags:
+
+commands:
 
 ### Languages supported
 
