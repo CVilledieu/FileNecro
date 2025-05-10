@@ -1,27 +1,26 @@
 CC = gcc
 
-.PHONY: all clean
-
-SRC = ./source/
-
-Src_Files = source/main.c
 CFLAGS = -Wall
 
-OUT =  ./bin
 
-NAME = app
-FINAL_OUT = $(OUT)/$(NAME) #Exe name, the flag for compiling, and the location to output to
-
-all:  clean build
+SRCd = ./src
+DEPd = $(SRCd)/depend
 
 
-build:$(Src_Files)
-	$(CC) $(CFLAGS) $< -o $(FINAL_OUT)
+SRCo = $(patsubst %.c, %.o, $(wildcard $(SRCd)/*.c))
+DEPo = $(patsubst %.c, %.o, $(wildcard $(DEPd)/*.c))
+ALLo = $(SRCo) $(DEPo)
+
+NAME_OUTPUT = -o bin/pCreate
 
 
-%.o: %.c
-	$(CC) -c $(CFLAGS)  $^ -o $(OUT)/$@
+all: build clean
 
+%.o: %.c 
+	$(CC) -c $(CFLAGS) $^ -o $@
 
-clean:
-	rm -f $(FINAL_OUT)
+build: $(ALLo)
+	$(CC)  $^ $(CFLAGS) $(LIBS)  $(NAME_OUTPUT) 
+
+clean: 
+	rm -rf $(SRCd)/*.o
